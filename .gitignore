@@ -27,3 +27,7 @@
 
 # Database file
 database.yml
+
+# IDE Files
+.idea
+.tool-versions
