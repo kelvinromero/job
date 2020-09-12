@@ -12,24 +12,22 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: <%= ENV.fetch("DB_POOL") || 5 %>
-  username: <%= ENV.fetch("DB_USERNAME") || 'root' %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
   password: <%= ENV.fetch("DB_PASSWORD") %>
-  protocol: tcp
-  host: <%= ENV.fetch("DB_HOST") || '127.0.0.1' %>
-  reconnect: true
-  #socket: /var/run/mysqld/mysqld.sock
+  host: 127.0.0.1
+  port: 3306
 
 development:
   <<: *default
-  database: estudar_development
+  database: job_seeker_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: estudar_test
+  database: job_seeker_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -52,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: estudar_production
-  username: estudar
-  password: <%= ENV['ESTUDAR_DATABASE_PASSWORD'] %>
+  database: job_seeker_production
+  username: job_seeker
+  password: <%= ENV['JOB_SEEKER_DATABASE_PASSWORD'] %>
