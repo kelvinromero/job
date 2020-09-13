@@ -40,13 +40,14 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    result = UpdateUser.call(user: @user, user_params: user_params)
     respond_to do |format|
-      if UpdateUser.call(user: @user, user_params: user_params).sucess?
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if result.success?
+        format.html { redirect_to result.user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: result.user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: result.user.errors, status: :unprocessable_entity }
       end
     end
   end
