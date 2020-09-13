@@ -114,6 +114,10 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n-debug (1.2.0)
       i18n (< 2)
+    interactor (3.1.2)
+    interactor-rails (2.2.1)
+      interactor (~> 3.0)
+      rails (>= 4.2)
     io-like (0.3.0)
     jaro_winkler (1.5.2)
     jbuilder (2.8.0)
@@ -321,6 +325,8 @@ DEPENDENCIES
   faker
   foreman
   i18n-debug
+  interactor (~> 3.0)
+  interactor-rails (~> 2.0)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
