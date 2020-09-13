@@ -24,15 +24,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    result = CreateUser.call(user_params: user_params)
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+      if result.success?
+        format.html { redirect_to result.user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: result.user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: result.message, status: :unprocessable_entity }
       end
     end
   end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if UpdateUser.call(user: @user, user_params: user_params).sucess?
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -54,9 +54,14 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    result = DestroyUser.call(user: @user)
+
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      if result.success?
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      else
+        format.html { redirect_to users_url, alert: result.message }
+      end
       format.json { head :no_content }
     end
   end
@@ -64,7 +69,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = FindUser.call(user_id: params[:id]).user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
