@@ -2,6 +2,7 @@ require 'net/http'
 
 class SyncUserWorker
   include Sidekiq::Worker
+  sidekiq_options :queue => :default , :retry => 1
 
   def perform(user_id)
     local_user = User.find(user_id)
