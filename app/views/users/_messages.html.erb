@@ -1,2 +1,9 @@
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
+<% if notice || alert %>
+  <br>
+  <div class="container">
+  <div class="notification">
+    <strong id="notice"><%= notice %></strong>
+    <strong id="alert"><%= alert %></strong>
+  </div>
+</div>
+<% end %>

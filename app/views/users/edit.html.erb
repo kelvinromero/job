@@ -1,6 +1,15 @@
-<h1>Editing User</h1>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Editing User</h1>
 
-<%= render 'form', user: @user %>
+    <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <button class="button is-light">
+      <%= link_to 'Show', @user %>
+    </button>
+
+    <button class="button is-light">
+      <%= link_to 'Back', users_path %>
+    </button>
+  </div>
+</section>
