@@ -21,5 +21,14 @@ RSpec.describe CreateUser, type: :interactor do
         expect(context.user.last_name).to eq("Wick")
       end
     end
+
+    context 'when given invalid user params' do
+      let (:invalid_params) { FactoryBot.build(:user_params, :invalid) }
+      let (:context) { CreateUser.call(user_params: invalid_params) }
+
+      it 'fails' do
+        expect(context).to be_a_failure
+      end
+    end
   end
 end
