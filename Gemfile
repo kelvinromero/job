@@ -91,6 +91,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'rspec-retry'
   gem 'timecop'
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
