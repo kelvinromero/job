@@ -4,6 +4,8 @@ class GetJson
   end
 
   def get
+    raise ArgumentError.new('Url is empty.') if @url.empty?
+
     begin
       res = Net::HTTP.get_response(URI(@url))
       JSON.parse(res.body)['data']

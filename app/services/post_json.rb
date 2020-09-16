@@ -5,6 +5,9 @@ class PostJson
   end
 
   def post
+    raise ArgumentError.new('Url is empty.') if @url.empty?
+    raise ArgumentError.new('Json is empty') if @json.empty?
+
     begin
       res = Net::HTTP.post_form(URI(@url), @json)
       JSON.parse(res.body)
