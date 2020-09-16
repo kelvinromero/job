@@ -4,8 +4,8 @@ class DestroyUser
   def call
     begin
       context.user.destroy!
-    rescue => e
-      context.fail!(message: "Ocorreu um erro na remoção do usuári e este foi reportado e será corrigido.")
+    rescue NoMethodError => e
+      context.fail!(message: e)
     end
   end
 end
