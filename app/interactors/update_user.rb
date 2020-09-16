@@ -2,6 +2,10 @@ class UpdateUser
   include Interactor
 
   def call
-    context.user.update!(context.user_params)
+    begin
+      context.user.update!(context.user_params)
+    rescue ActiveRecord::RecordInvalid => e
+      context.fail!(message: e)
+    end
   end
 end
