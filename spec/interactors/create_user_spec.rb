@@ -30,6 +30,9 @@ RSpec.describe CreateUser, type: :interactor do
         expect(context).to be_a_failure
       end
 
+      it "should have a user with errors" do
+        expect(context.user.errors.any?).to eq(true)
+      end
     end
   end
 end
