@@ -53,3 +53,4 @@ production:
   database: job_seeker_production
   username: job_seeker
   password: <%= ENV['JOB_SEEKER_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
