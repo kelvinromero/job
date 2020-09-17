@@ -6,11 +6,11 @@ class User < ApplicationRecord
   REMOTE_USERS_URL = 'https://reqres.in/api/users'
 
   def sync_on_remote!
-    return unless (users = GetJson.new(REMOTE_USERS_URL).get)
+    return unless (users = JsonApi.new(REMOTE_USERS_URL).get)
     return if user_exists_on_remote(users, self)
 
     json = self.as_json(only: [:first_name, :last_name])
-    remote_user = PostJson.new(REMOTE_USERS_URL, json).post
+    remote_user = JsonApi.new(REMOTE_USERS_URL, json).post
 
     if remote_user
       self.remote_id = remote_user["id"]

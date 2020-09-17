@@ -66,7 +66,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rubocop'
   gem 'rspec-rails'
-  gem 'rspec-sidekiq'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
@@ -91,6 +90,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'rspec-retry'
+  gem 'rspec-sidekiq'
   gem 'timecop'
   gem 'simplecov', require: false
 end
