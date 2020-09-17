@@ -1,5 +1,6 @@
 class SyncUserWorker
   include Sidekiq::Worker
+  sidekiq_options :queue => :user_sync
 
   def perform(user_id)
     user = User.find(user_id)

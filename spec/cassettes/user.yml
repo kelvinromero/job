@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://reqres.in/api/users
+    body:
+      encoding: US-ASCII
+      string: first_name=MyString&last_name=MyString
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - reqres.in
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 17 Sep 2020 00:47:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '98'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=db0790e50e52ecd566b198a78c3f291ee1600303631; expires=Sat, 17-Oct-20
+        00:47:11 GMT; path=/; domain=.reqres.in; HttpOnly; SameSite=Lax; Secure
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"62-Kjak8ZXHiNTlKyrJ/dJ8plqQltI"
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 053b20a5890000f2034a157200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5d3ed0827e5cf203-GRU
+    body:
+      encoding: UTF-8
+      string: '{"first_name":"MyString","last_name":"MyString","id":"792","createdAt":"2020-09-17T00:47:12.082Z"}'
+    http_version: 
+  recorded_at: Thu, 17 Sep 2020 00:47:12 GMT
+recorded_with: VCR 4.0.0

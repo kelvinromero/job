@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :user do
+  factory :user_params, class: Hash do
     first_name { "MyString" }
     last_name { "MyString" }
 
@@ -8,8 +8,6 @@ FactoryBot.define do
       last_name { "" }
     end
 
-    trait :synced do
-      remote_id { [*1..100000].sample }
-    end
+    initialize_with { attributes }
   end
 end

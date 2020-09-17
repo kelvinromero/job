@@ -1,40 +1,30 @@
 class User < ApplicationRecord
 
+  validates_presence_of :first_name, :last_name
+  validates :first_name, :last_name, length: { minimum: 1, allow_nil: false}
+
+  REMOTE_USERS_URL = 'https://reqres.in/api/users'
+
   def sync_on_remote!
-    return unless (users = get_users)
+    return unless (users = GetJson.new(REMOTE_USERS_URL).get)
     return if user_exists_on_remote(users, self)
 
-    if (remote_user = post_user(self))
+    json = self.as_json(only: [:first_name, :last_name])
+    remote_user = PostJson.new(REMOTE_USERS_URL, json).post
+
+    if remote_user
       self.remote_id = remote_user["id"]
       self.save!
     end
   end
 
   private
-  # TODO: Move API calls to services (Or interactors maybe
-  # )
-  def get_users
-    begin
-      uri = URI('https://reqres.in/api/users?per_page=12')
-      res = Net::HTTP.get_response(uri)
-      JSON.parse(res.body)['data']
-    rescue SocketError
-      return false
-    end
-  end
-
-  def post_user(local_user)
-    begin
-      uri = URI('https://reqres.in/api/users')
-      user = { first_name: local_user.first_name, last_name: local_user.last_name }
-      res = Net::HTTP.post_form(uri, user)
-      JSON.parse(res.body)
-    rescue SocketError
-      return false
-    end
-  end
-
   def user_exists_on_remote(users, local_user)
-    users.select { |user| user["first_name"] == local_user.first_name and user["last_name"] == local_user.last_name }.any?
+    users = users.select do |user|
+      user["first_name"] == local_user.first_name and user["last_name"] == local_user.last_name
+    end
+
+    users.any?
   end
+
 end
