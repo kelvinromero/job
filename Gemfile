@@ -54,6 +54,7 @@ gem 'premailer-rails'
 
 # background jobs
 gem 'sidekiq'
+gem 'rspec-sidekiq'
 gem 'foreman'
 
 # manage env vars
