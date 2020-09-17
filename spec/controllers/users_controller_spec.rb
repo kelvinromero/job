@@ -86,7 +86,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    xcontext "with invalid params" do
+    context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: {user: invalid_attributes}, session: valid_session
         expect(response).to be_successful
