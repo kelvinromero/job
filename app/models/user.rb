@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+  validates_presence_of :first_name, :last_name
   validates :first_name, :last_name, length: { minimum: 1, allow_nil: false}
 
   REMOTE_USERS_URL = 'https://reqres.in/api/users'
