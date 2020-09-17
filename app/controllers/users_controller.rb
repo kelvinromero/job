@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     result = RegisterUser.call(user_params: user_params)
+    @user = result.user
 
     respond_to do |format|
       if result.success?
