@@ -15,7 +15,7 @@ RSpec.describe GetJson do
 
     context 'when url is invalid' do
       it 'should return false' do
-        VCR.use_cassette("invalid url") do
+        VCR.use_cassette("invalid_data") do
           req = GetJson.new 'https://r2eqres.in/api/users'
           expect(req.get).to eq(false)
         end
@@ -24,7 +24,7 @@ RSpec.describe GetJson do
 
     context 'when url is empty' do
       it 'should raise ArgumentError' do
-        VCR.use_cassette("invalid url") do
+        VCR.use_cassette("invalid_data") do
           req = GetJson.new ''
           expect { req.get }.to raise_error(ArgumentError)
         end

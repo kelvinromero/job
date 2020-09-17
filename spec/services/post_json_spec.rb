@@ -9,7 +9,7 @@ RSpec.describe PostJson do
 
     context 'when params are valid' do
       it 'should return a hash' do
-        VCR.use_cassette("users") do
+        VCR.use_cassette("user") do
           expect(req.post).to be_a Hash
         end
       end
@@ -17,7 +17,7 @@ RSpec.describe PostJson do
 
     context 'when url is invalid' do
       it 'should return false' do
-        VCR.use_cassette("invalid url") do
+        VCR.use_cassette("invalid_data") do
           req = PostJson.new 'https://r2eqres.in/api/users', valid_data
           expect(req.post).to eq(false)
         end
@@ -26,7 +26,7 @@ RSpec.describe PostJson do
 
     context 'when url is empty' do
       it 'should raise ArgumentError' do
-        VCR.use_cassette("invalid url") do
+        VCR.use_cassette("invalid_data") do
           req = PostJson.new '', valid_data
           expect { req.post }.to raise_error(ArgumentError)
         end
