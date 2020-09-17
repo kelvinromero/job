@@ -54,7 +54,6 @@ gem 'premailer-rails'
 
 # background jobs
 gem 'sidekiq'
-gem 'rspec-sidekiq'
 gem 'foreman'
 
 # manage env vars
@@ -67,6 +66,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rubocop'
   gem 'rspec-rails'
+  gem 'rspec-sidekiq'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
