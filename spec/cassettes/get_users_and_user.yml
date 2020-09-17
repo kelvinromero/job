@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 17 Sep 2020 00:47:11 GMT
+      - Thu, 17 Sep 2020 00:47:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,8 +29,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d4d3a724e088d74d8ad2135d1cd6d0a091600303631; expires=Sat, 17-Oct-20
-        00:47:11 GMT; path=/; domain=.reqres.in; HttpOnly; SameSite=Lax; Secure
+      - __cfduid=ddb2a29b47e75c0ce3a30d08b68141ccb1600303629; expires=Sat, 17-Oct-20
+        00:47:09 GMT; path=/; domain=.reqres.in; HttpOnly; SameSite=Lax; Secure
       X-Powered-By:
       - Express
       Access-Control-Allow-Origin:
@@ -42,11 +42,9 @@ http_interactions:
       Cache-Control:
       - max-age=14400
       Cf-Cache-Status:
-      - HIT
-      Age:
-      - '651'
+      - REVALIDATED
       Cf-Request-Id:
-      - 053b20a2ad0000f617f60ba200000001
+      - 053b209d330000e0788c191200000001
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Vary:
@@ -54,7 +52,7 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 5d3ed07dee1bf617-GRU
+      - 5d3ed0751c3ee078-FOR
     body:
       encoding: ASCII-8BIT
       string: '{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"George","last_name":"Bluth","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg"},{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg"},{"id":3,"email":"emma.wong@reqres.in","first_name":"Emma","last_name":"Wong","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg"},{"id":4,"email":"eve.holt@reqres.in","first_name":"Eve","last_name":"Holt","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"},{"id":5,"email":"charles.morris@reqres.in","first_name":"Charles","last_name":"Morris","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg"},{"id":6,"email":"tracey.ramos@reqres.in","first_name":"Tracey","last_name":"Ramos","avatar":"https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg"}],"ad":{"company":"StatusCode
@@ -62,5 +60,61 @@ http_interactions:
         on software development, infrastructure, the server, performance, and the
         stack end of things."}}'
     http_version: 
-  recorded_at: Thu, 17 Sep 2020 00:47:11 GMT
+  recorded_at: Thu, 17 Sep 2020 00:47:10 GMT
+- request:
+    method: post
+    uri: https://reqres.in/api/users
+    body:
+      encoding: US-ASCII
+      string: first_name=MyString&last_name=MyString
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - reqres.in
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 17 Sep 2020 00:47:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '98'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d99eff99486668d5e8c99adde6a80d2aa1600303630; expires=Sat, 17-Oct-20
+        00:47:10 GMT; path=/; domain=.reqres.in; HttpOnly; SameSite=Lax; Secure
+      X-Powered-By:
+      - Express
+      Access-Control-Allow-Origin:
+      - "*"
+      Etag:
+      - W/"62-PejvwC9IEbtAsF1oOB3EQUDqCNY"
+      Via:
+      - 1.1 vegur
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 053b209fbd0000f74002bdc200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5d3ed079282cf740-GRU
+    body:
+      encoding: UTF-8
+      string: '{"first_name":"MyString","last_name":"MyString","id":"106","createdAt":"2020-09-17T00:47:10.576Z"}'
+    http_version: 
+  recorded_at: Thu, 17 Sep 2020 00:47:10 GMT
 recorded_with: VCR 4.0.0
