@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe User, type: :model do
-  subject { FactoryBot.build(:user) }
+  subject { FactoryBot.create(:user) }
   describe '.save' do
     context 'with valid attributes' do
       it 'should succeeds' do
@@ -40,12 +40,12 @@ RSpec.describe User, type: :model do
 
   describe '.sync_on_remote!' do
     context 'when valid user' do
-      xit 'should change the remote id attribute' do
-        # TODO: Casset can record only ONE request, second gets lost
-        VCR.use_cassette('get_users') do
+      it 'should change the remote id attribute' do
+        remote_id_before_sync = subject.remote_id
+        VCR.use_cassette("get_users_and_user") do
           subject.sync_on_remote!
         end
-        expect(subject.remote_id).to_not be(subject.remote_id)
+        expect(subject.remote_id).to_not be(remote_id_before_sync)
       end
     end
   end
