@@ -39,14 +39,11 @@ RSpec.describe User, type: :model do
   end
 
   describe '.sync_on_remote!' do
-    context 'when valid user' do
-      it 'should change the remote id attribute' do
-        remote_id_before_sync = subject.remote_id
-        VCR.use_cassette("get_users_and_user") do
-          subject.sync_on_remote!
-        end
-        expect(subject.remote_id).to_not be(remote_id_before_sync)
+    it 'remote_id not should be nil' do
+      VCR.use_cassette("get_users_and_user") do
+        subject.sync_on_remote!
       end
+      expect(subject.remote_id).to_not be(nil)
     end
   end
 end
