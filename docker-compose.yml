@@ -1,0 +1,48 @@
+version: '3.3'
+services:
+  redis:
+    image: 'redis:alpine'
+    container_name: 'redis'
+
+  sidekiq:
+    image: 'web'
+    container_name: 'sidekiq'
+    links:
+      - redis:redis
+    volumes:
+      - .:/usr/src/app
+    command: bundle exec sidekiq
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL: "redis://redis:6379/12"
+      DB_HOST: db
+      RAILS_ENV: 'development'
+
+  db:
+    image: "mysql:5.7"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USERNAME: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      DATABASE: job_seeker_development
+    ports:
+      - "3307:3306"
+
+  web:
+    build: .
+    image: 'web'
+    container_name: 'web'
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      REDIS_URL: "redis://redis:6379/12"
+      RAILS_ENV: 'development'
+    volumes:
+      - .:/usr/src/app
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 3000:3000
+    command:
+      "rails s -b 0.0.0.0"
